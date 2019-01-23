@@ -2,7 +2,12 @@ package com.learnConcurrency.utils.semaphore;
 
 import java.io.IOException;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 public class Case {
 
@@ -28,12 +33,16 @@ public class Case {
             }
         }
 
+        List<Player> players = new ArrayList<>();
+        Map<String, List<Player>> collect = players.stream().collect(Collectors.groupingBy(e -> e.playerName));
+        StringBuilder stringBuilder = new StringBuilder();
+
     }
 
     static class Player implements Runnable{
 
 
-        private String playerName;
+        public String playerName;
         private Semaphore semaphore;
 
         public Player(String playerName, Semaphore semaphore) {
